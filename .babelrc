@@ -1,0 +1,30 @@
+ 
+{
+  "presets": [
+    "next/babel",
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    ["@babel/plugin-proposal-class-properties"],
+    ["@babel/plugin-syntax-dynamic-import"],
+    ["@babel/plugin-proposal-export-default-from"],
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./"
+        ],
+        "alias": {
+          "@components": "./src/components",
+          "@actions": "./src/actions",
+          "@styles": "./src/styles/components",
+          "@api": "./src/api",
+          "@redux": "./src/redux",
+          "@utils": "./src/utils",
+          "@images": "./public/images/",
+          "@containers": "./src/containers"
+        }
+      }
+    ]
+  ]
+}

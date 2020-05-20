@@ -1,0 +1,18 @@
+export const EVENT_POSTS = 'EVENT_POSTS';
+export const POSTS_REQUEST = 'POSTS_REQUEST';
+export const POSTS_CATEGORY = 'POSTS_CATEGORY';
+
+export const POSTS_REQUESTING = 'POSTS_REQUESTING';
+export const POSTS_SUCCESS = 'POSTS_SUCCESS';
+export const POSTS_ERROR = 'POSTS_ERROR';
+export const POSTS_EXISTING = 'POSTS_EXISTING';
+
+export const EVENT_CATEGORY = 'EVENT_CATEGORY';
+export const GET_CATEGORY = 'GET_CATEGORY';
+
+export const PROFILE_FIND_POSTS = 'PROFILE_FIND_POSTS';
+
+export const POSTS_GET = 'POSTS_GET';
+export const POSTS_GET_BY_ID = 'POSTS_GET_BY_ID';
+
+export const GET_POST_TO_VIEW = 'GET_POST_TO_VIEW';

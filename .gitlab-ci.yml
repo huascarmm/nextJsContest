@@ -1,0 +1,62 @@
+variables:
+  DOCKER_DRIVER: overlay2
+image: alanfernando93/monkey-nodbrew
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+
+before_script:
+  - brew install libpng
+  - node -v
+  - npm install -g yarn
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - ssh-keyscan 34.94.173.160  >> ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+
+stages:
+  - deploydev
+  - deployprod
+
+# Backend to development:
+#   stage: deploydev
+#   only:
+#     - develop
+#   script:
+#     - npm install --silent
+#     - npm run build:dll
+#     - npm run build:dev
+#     - ls -la app
+#     - cp app/.htaccess build/.htaccess
+#     - cp app/robots.txt build/
+#     - cp app/sitemap.txt build/
+#     - cp -r public/* build/
+#     - rsync -r -a -z -e ssh --delete build/ gitlab@34.94.173.160:/home/gitlab/municipios/devFrontend
+
+Nextjs to develop:
+  stage: deploydev
+  only:
+    - feature/nextjs
+  script:
+    - yarn install --silent
+    - yarn build:dev
+    - yarn export:dev
+    - rsync -r -a -z -e ssh --delete out/ gitlab@34.94.173.160:/home/gitlab/municipios/devFrontend
+
+Nextjs to production:
+  stage: deployprod
+  only:
+    - master
+  script:
+    - npm install --silent
+    - npm run build
+    - ls -la app
+    - cp app/.htaccess build/.htaccess
+    - cp app/robots.txt build/
+    - cp app/sitemap.txt build/
+    - cp -r public/* build/
+    - rsync -r -a -z -e ssh --delete build/ gitlab@34.94.173.160:/home/gitlab/municipios/frontend

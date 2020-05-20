@@ -1,0 +1,10 @@
+
+export const ON_ROLES = 'ON_ROLES';
+export const GET_RECORD_LOGINS = 'GET_RECORD_LOGINS';
+export const SET_RECORD_LOGINS = 'SET_RECORD_LOGINS';
+
+export const LOGIN_FIND = 'LOGIN_FIND';
+export const LOGIN_FIND_BY_ID = 'LOGIN_FIND_BY_ID';
+export const LOGIN_REPLACE_BY_ID = 'LOGIN_REPLACE_BY_ID';
+export const LOGIN_UPDATE_BY_ID = 'LOGIN_UPDATE_BY_ID';
+export const LOGIN_DELETE_BY_ID = 'LOGIN_DELETE_BY_ID';

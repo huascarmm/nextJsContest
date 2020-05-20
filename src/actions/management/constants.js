@@ -1,0 +1,21 @@
+export const ON_LOAD = 'ON_LOAD';
+export const ON_INIT = 'ON_INIT';
+export const ON_FINISH = 'ON_FINISH';
+export const ON_DESTROY = 'ON_DESTROY';
+
+export const CHANGE_PAGE = 'CHANGE_PAGE';
+export const CHANGE_TOKEN = 'CHANGE_TOKEN';
+
+export const ROLE_REQUESTING = 'ROLE_REQUESTING';
+export const ROLE_SUCCESS = 'ROLE_SUCCESS';
+export const ROLE_ERROR = 'ROLE_ERROR';
+export const ROLE_EXISTING = 'ROLE_EXISTING';
+
+export const ON_GENERATE_LINK_INVITED = 'ON_GENERATE_LINK_INVITED';
+export const SAVE_ROLES = 'SAVE_ROLES';
+export const SAVE_HIERARCHIES = 'SAVE_HIERARCHIES';
+export const SAVE_GUIDE_TASKS = 'SAVE_GUIDE_TASKS';
+
+export const LIST_HIERARCHY = 'LIST_HIERARCHY';
+export const LIST_MUNICIPAL_DEPARTMENT = 'LIST_MUNICIPAL_DEPARTMENT';
+export const LIST_USER = 'LIST_USER';
