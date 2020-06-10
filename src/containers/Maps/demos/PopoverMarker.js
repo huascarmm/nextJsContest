@@ -51,7 +51,7 @@ class PopoverMarker extends React.Component {
     const { badgeMarker } = this.props;
     return (
       <MapWithAMakredInfoWindow
-        googleMapURL="https://maps.googleapis.com/maps/api/js?key=xxxxxxxxxxxxxxxxxx&v=3.exp&libraries=geometry,drawing,places"
+        googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyAexm2_HTB7mX3R67XNic5NgOd7jHmFWS4&v=3.exp&libraries=geometry,drawing,places'
         loadingElement={<div style={{ height: '100%' }} />}
         containerElement={<div style={{ height: '400px' }} />}
         mapElement={<div style={{ height: '100%' }} />}
