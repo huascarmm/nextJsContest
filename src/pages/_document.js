@@ -92,18 +92,6 @@ class MyDocument extends Document {
             content="/favicons/ms-icon-144x144.png"
           />
           <meta name="theme-color" content="#2196F3" />
-          <link
-            href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
-            rel="stylesheet"
-            media="none"
-            onload="if(media!='all')media='all'"
-          />
-          <link
-            href="https://fonts.googleapis.com/icon?family=Material+Icons"
-            rel="stylesheet"
-            media="none"
-            onload="if(media!='all')media='all'"
-          />
         </Head>
         <body>
           <div id="page-transition"></div>
