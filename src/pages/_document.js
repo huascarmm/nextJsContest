@@ -95,10 +95,14 @@ class MyDocument extends Document {
           <link
             href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
             rel="stylesheet"
+            media="none"
+            onload="if(media!='all')media='all'"
           />
           <link
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
             rel="stylesheet"
+            media="none"
+            onload="if(media!='all')media='all'"
           />
         </Head>
         <body>
@@ -110,12 +114,12 @@ class MyDocument extends Document {
     );
   }
 }
-MyDocument.getInitialProps = async ctx => {
+MyDocument.getInitialProps = async (ctx) => {
   const sheets = new ServerStyleSheets();
   const originalRenderPage = ctx.renderPage;
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: App => props => sheets.collect(<App {...props} />)
+      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
     });
   const initialProps = await Document.getInitialProps(ctx);
   return {
@@ -125,8 +129,8 @@ MyDocument.getInitialProps = async ctx => {
       <React.Fragment key="styles">
         {initialProps.styles}
         {sheets.getStyleElement()}
-      </React.Fragment>
-    ]
+      </React.Fragment>,
+    ],
   };
 };
 export default MyDocument;
