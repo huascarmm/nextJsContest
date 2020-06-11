@@ -1,6 +1,6 @@
-import React from 'react';
-import Document, { Head, Main, NextScript, Html } from 'next/document';
-import { ServerStyleSheets } from '@material-ui/core/styles';
+import React from "react";
+import Document, { Head, Main, NextScript, Html } from "next/document";
+import { ServerStyleSheets } from "@material-ui/core/styles";
 
 class MyDocument extends Document {
   render() {
@@ -93,7 +93,7 @@ class MyDocument extends Document {
           />
           <meta name="theme-color" content="#2196F3" />
           <link
-            href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700"
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap"
             rel="stylesheet"
           />
           <link
@@ -115,7 +115,7 @@ MyDocument.getInitialProps = async ctx => {
   const originalRenderPage = ctx.renderPage;
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: App => props => sheets.collect(<App {...props} />),
+      enhanceApp: App => props => sheets.collect(<App {...props} />)
     });
   const initialProps = await Document.getInitialProps(ctx);
   return {
@@ -126,7 +126,7 @@ MyDocument.getInitialProps = async ctx => {
         {initialProps.styles}
         {sheets.getStyleElement()}
       </React.Fragment>
-    ],
+    ]
   };
 };
 export default MyDocument;
