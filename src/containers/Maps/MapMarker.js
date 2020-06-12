@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Suspense } from "react";
 // import { Helmet } from 'react-helmet';
-import PropTypes from 'prop-types';
-import { PapperBlock } from '@components';
-import { PopoverMarker } from './demos';
+import PropTypes from "prop-types";
+import { PapperBlock } from "@components";
+const PopoverMarker = React.lazy(() => import("./demos/PopoverMarker"));
 
 class MapMarker extends React.Component {
   render() {
@@ -18,7 +18,9 @@ class MapMarker extends React.Component {
           <meta property="twitter:description" content={description} />
         </Helmet> */}
         <PapperBlock overflowX title={title} desc={description}>
-          <PopoverMarker badgeMarker={badgeMarker} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <PopoverMarker badgeMarker={badgeMarker} />
+          </Suspense>
         </PapperBlock>
       </div>
     );
@@ -27,7 +29,7 @@ class MapMarker extends React.Component {
 MapMarker.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  badgeMarker: PropTypes.string.isRequired
+  badgeMarker: PropTypes.string.isRequired,
 };
 export default MapMarker;
 /**

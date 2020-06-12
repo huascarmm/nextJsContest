@@ -1,5 +1,5 @@
 // import { Loading } from '@components';
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 
 // // Dashboard
 // export const LandingPage = dynamic({
@@ -161,4 +161,4 @@ import dynamic from 'next/dynamic';
 
 // news components
 
-export const MapMarker = dynamic(() => import('./Maps/MapMarker'))
+export default dynamic(() => import("./Maps/MapMarker"));
