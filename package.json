@@ -13,7 +13,8 @@
     "analyze": "cross-env BUNDLE_ANALYZE=true next build",
     "lighthouse:mobile": "lighthouse http://localhost:3000 --emulated-form-factor mobile --view --quiet --chrome-flags='--headless' --output-path=./lighthouse.report.mobile.html",
     "lighthouse:desktop": "lighthouse http://localhost:3000 --emulated-form-factor desktop --view --quiet --chrome-flags='--headless' --output-path=./lighthouse.report.desktop.html",
-    "performance": "yarn lighthouse:mobile && yarn lighthouse:desktop"
+    "performance": "yarn lighthouse:mobile && yarn lighthouse:desktop",
+    "heroku-postbuild": "yarn build"
   },
   "lint-staged": {
     "*.js": [
