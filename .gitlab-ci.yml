@@ -45,9 +45,9 @@ Deploy Frontend with Next:
     - yarn install --silent
     - yarn build:dev
     # - yarn performance
-    - pm2 stop dNext
+    # - pm2 stop dNext
     - rsync -r -a -z -e ssh --delete .next/ gitlab@34.94.173.160:/home/gitlab/municipios/dNextFrontend
-    - pm2 restart dNext
+    # - pm2 restart dNext
 
 Deploy Frontend with Next Production:
   stage: deployprod
@@ -62,6 +62,6 @@ Deploy Frontend with Next Production:
     - cp app/robots.txt build/
     - cp app/sitemap.txt build/
     - cp -r public/* build/
-    - pm2 stop next
+    # - pm2 stop next
     - rsync -r -a -z -e ssh --delete .next/ gitlab@34.94.173.160:/home/gitlab/municipios/nextFrontend
-    - pm2 restart next
+    # - pm2 restart next
