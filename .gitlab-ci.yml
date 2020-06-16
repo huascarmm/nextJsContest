@@ -37,26 +37,31 @@ stages:
 #     - cp -r public/* build/
 #     - rsync -r -a -z -e ssh --delete build/ gitlab@34.94.173.160:/home/gitlab/municipios/devFrontend
 
-Nextjs to develop:
+Deploy Frontend with Next:
   stage: deploydev
   only:
-    - feature/nextjs
+    - develop
   script:
     - yarn install --silent
     - yarn build:dev
-    - yarn export:dev
-    - rsync -r -a -z -e ssh --delete out/ gitlab@34.94.173.160:/home/gitlab/municipios/devFrontend
+    # - yarn performance
+    - pm2 stop dNext
+    - rsync -r -a -z -e ssh --delete .next/ gitlab@34.94.173.160:/home/gitlab/municipios/dNextFrontend
+    - pm2 restart dNext
 
-Nextjs to production:
+Deploy Frontend with Next Production:
   stage: deployprod
   only:
     - master
   script:
-    - npm install --silent
-    - npm run build
+    - yarn install --silent
+    - yarn build
+    # - yarn performance
     - ls -la app
     - cp app/.htaccess build/.htaccess
     - cp app/robots.txt build/
     - cp app/sitemap.txt build/
     - cp -r public/* build/
-    - rsync -r -a -z -e ssh --delete build/ gitlab@34.94.173.160:/home/gitlab/municipios/frontend
+    - pm2 stop next
+    - rsync -r -a -z -e ssh --delete .next/ gitlab@34.94.173.160:/home/gitlab/municipios/nextFrontend
+    - pm2 restart next
