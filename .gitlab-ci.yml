@@ -57,11 +57,6 @@ Deploy Frontend with Next Production:
     - yarn install --silent
     - yarn build
     # - yarn performance
-    - ls -la app
-    - cp app/.htaccess build/.htaccess
-    - cp app/robots.txt build/
-    - cp app/sitemap.txt build/
-    - cp -r public/* build/
     # - pm2 stop next
     - rsync -r -a -z -e ssh --delete .next/ gitlab@34.94.173.160:/home/gitlab/municipios/nextFrontend
     # - pm2 restart next
