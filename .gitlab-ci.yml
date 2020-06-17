@@ -46,7 +46,7 @@ Deploy Frontend with Next:
     - yarn build:dev
     # - yarn performance
     # - pm2 stop dNext
-    - rsync -r -a -z -e ssh --delete .next/ gitlab@34.94.173.160:/home/gitlab/municipios/dNextFrontend
+    - rsync -r -a -z -e ssh --delete --exclude './node_modules' . gitlab@34.94.173.160:/home/gitlab/municipios/dNextFrontend
     # - pm2 restart dNext
 
 Deploy Frontend with Next Production:
@@ -58,5 +58,5 @@ Deploy Frontend with Next Production:
     - yarn build
     # - yarn performance
     # - pm2 stop next
-    - rsync -r -a -z -e ssh --delete .next/ gitlab@34.94.173.160:/home/gitlab/municipios/nextFrontend
+    - rsync -r -a -z -e ssh --delete --exclude './node_modules' . gitlab@34.94.173.160:/home/gitlab/municipios/nextFrontend
     # - pm2 restart next
