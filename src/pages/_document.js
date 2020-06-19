@@ -86,6 +86,11 @@ class MyDocument extends Document {
             href="/favicons/favicon-16x16.png"
           />
           <link rel="manifest" href="/manifest.json" />
+          <link rel="preconnect" href={process.env.API_REST} />
+          <link
+            rel="preconnect"
+            href="https://maps.googleapis.com/maps/api/staticmap"
+          />
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta
             name="msapplication-TileImage"

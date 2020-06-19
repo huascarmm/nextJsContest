@@ -7,14 +7,13 @@
     "dev:staging": "cross-env NODE_ENV=development node server",
     "build:dev": "cross-env NODE_BRANCH=development next build",
     "build": "cross-env NODE_BRANCH=production next build",
-    "start:dev": "cross-env NODE_ENV=development NODE_BRANCH=development node server",
+    "start:test": "cross-env NODE_ENV=production NODE_BRANCH=development PORT=7070 node server test",
+    "start:dev": "cross-env NODE_ENV=production NODE_BRANCH=development PORT=7070 node server",
     "start": "cross-env NODE_ENV=production NODE_BRANCH=production node server",
     "export:dev": "rm -rf ./out && cross-env NODE_EXPORT=true NODE_BRANCH=development next export",
     "export:prod": "rm -rf ./out && cross-env NODE_EXPORT=true NODE_BRANCH=production next export",
     "analyze": "cross-env BUNDLE_ANALYZE=true next build",
-    "lighthouse:mobile": "lighthouse http://localhost:3000 --emulated-form-factor mobile --view --quiet --chrome-flags='--headless' --output json --output-path=./lighthouse.report.mobile.json",
-    "lighthouse:desktop": "lighthouse http://localhost:3000 --emulated-form-factor desktop --view --quiet --chrome-flags='--headless' --output json --output-path=./lighthouse.report.desktop.json",
-    "performance": "yarn lighthouse:mobile && yarn lighthouse:desktop && node performance"
+    "performance": "node lighthouse http://localhost:7070 && node performance"
   },
   "lint-staged": {
     "*.js": [

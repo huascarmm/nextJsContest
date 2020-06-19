@@ -22,20 +22,14 @@ stages:
   - deploydev
   - deployprod
 
-# Backend to development:
-#   stage: deploydev
-#   only:
-#     - develop
-#   script:
-#     - npm install --silent
-#     - npm run build:dll
-#     - npm run build:dev
-#     - ls -la app
-#     - cp app/.htaccess build/.htaccess
-#     - cp app/robots.txt build/
-#     - cp app/sitemap.txt build/
-#     - cp -r public/* build/
-#     - rsync -r -a -z -e ssh --delete build/ gitlab@34.94.173.160:/home/gitlab/municipios/devFrontend
+Deploy for Performance Test:
+  stage: deploydev
+  only:
+    - feature/better-performance
+  script:
+    - yarn install --silent
+    - yarn build:dev
+    - yarn start:test
 
 Deploy Frontend with Next:
   stage: deploydev
@@ -44,10 +38,9 @@ Deploy Frontend with Next:
   script:
     - yarn install --silent
     - yarn build:dev
-    # - yarn performance
-    # - pm2 stop dNext
+    - ssh gitlab@34.94.173.160 'pm2 stop dNext'
     - rsync -r -a -z -e ssh --delete --exclude './node_modules' . gitlab@34.94.173.160:/home/gitlab/municipios/dNextFrontend
-    # - pm2 restart dNext
+    - ssh gitlab@34.94.173.160 'pm2 restart dNext'
 
 Deploy Frontend with Next Production:
   stage: deployprod
@@ -56,7 +49,6 @@ Deploy Frontend with Next Production:
   script:
     - yarn install --silent
     - yarn build
-    # - yarn performance
-    # - pm2 stop next
+    - ssh gitlab@34.94.173.160 'pm2 stop next'
     - rsync -r -a -z -e ssh --delete --exclude './node_modules' . gitlab@34.94.173.160:/home/gitlab/municipios/nextFrontend
-    # - pm2 restart next
+    - ssh gitlab@34.94.173.160 'pm2 restart next'

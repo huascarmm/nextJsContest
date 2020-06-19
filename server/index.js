@@ -9,10 +9,14 @@ const next = require("next");
 
 const routes = require("./router.module");
 
-const PORT = process.env.NODE_ENV === "production" ? 7000 : 7070;
+const PORT = process.env.PORT ? process.env.PORT : 7000;
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = routes.getRequestHandler(app);
+
+const { exec } = require("child_process");
+
+const testPerformance = process.argv[2] === "test";
 
 app.prepare().then(() => {
   const server = express();
@@ -29,5 +33,18 @@ app.prepare().then(() => {
   server.listen(PORT, (err) => {
     if (err) throw err;
     console.log(`> Ready on http://localhost:${PORT}`);
+    if (testPerformance) {
+      console.log("testing performace");
+      exec("yarn performance", (error, stdout, stderr) => {
+        if (error) {
+          console.log(`error: ${error.message}`);
+        }
+        if (stderr) {
+          console.log(`stderr: ${stderr}`);
+        }
+        console.log(`stdout: ${stdout}`);
+        process.exit(0);
+      });
+    }
   });
 });
