@@ -1,7 +1,12 @@
-const report = require("./lighthouse.report.desktop.json");
-const performanceScore = report.categories.performance.score * 100;
-console.log(report.categories.performance.score * 100);
+const reportDesktop = require("./lighthouse.report.desktop.json");
+const reportMobile = require("./lighthouse.report.mobile.json");
 
-if (performanceScore < 80) {
-  throw Error("Performance is less than 80");
+const scoreDesktop = reportDesktop.categories.performance.score * 100;
+const scoreMobile = reportMobile.categories.performance.score * 100;
+
+console.log(scoreDesktop + " for desktop");
+console.log(scoreMobile + " for mobile");
+
+if (scoreDesktop < 80 || scoreMobile < 80) {
+  console.error("Performance is less than 80");
 }
