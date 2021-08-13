@@ -51,7 +51,7 @@
     "immutable": "^4.0.0-rc.12",
     "material-table": "^1.57.2",
     "mui-datatables": "^2.14.0",
-    "next": "9.3.6",
+    "next": "11.1.0",
     "next-compose-plugins": "^2.2.0",
     "next-images": "^1.4.0",
     "next-offline": "^5.0.1",
